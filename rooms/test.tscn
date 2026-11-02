@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://xsl11wrhukxi"]
+
+[ext_resource type="PackedScene" uid="uid://b8u25dlcaf8vs" path="res://rooms/room.tscn" id="1_jy40g"]
+[ext_resource type="PackedScene" uid="uid://c5mh6i405xv6d" path="res://entities/devotee.tscn" id="2_yo7q2"]
+[ext_resource type="PackedScene" uid="uid://d2wrg7v4r1504" path="res://entities/enemies/enemy.tscn" id="3_tu2lb"]
+[ext_resource type="PackedScene" uid="uid://mhq2eqlgvgv6" path="res://objects/items/item.tscn" id="4_58jih"]
+
+[node name="Room" unique_id=1497093105 instance=ExtResource("1_jy40g")]
+
+[node name="Devotee" parent="." index="0" unique_id=590384946 instance=ExtResource("2_yo7q2")]
+position = Vector2(413, 142)
+
+[node name="Shadow" parent="." index="1" unique_id=945603901 instance=ExtResource("3_tu2lb")]
+position = Vector2(879, 505)
+
+[node name="Shadow2" parent="." index="2" unique_id=2024612518 instance=ExtResource("3_tu2lb")]
+position = Vector2(167, 433)
+
+[node name="Item" parent="." index="3" unique_id=177792563 instance=ExtResource("4_58jih")]
+position = Vector2(758, 224)
+
+[node name="Item2" parent="." index="4" unique_id=1864441545 instance=ExtResource("4_58jih")]
+position = Vector2(614, 330)

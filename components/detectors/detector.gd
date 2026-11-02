@@ -6,11 +6,20 @@ extends Area2D
 @onready var collision_shape: CollisionShape2D = %CollisionShape2D
 
 
-func get_detected() -> Node:
+func _ready() -> void:
+	if collision_mask == 0:
+		push_error("Detector: Collision mask is not set.")
+
+
+func get_detected() -> Node2D:
+	var valid: Array[Node2D] = []
 	for body in get_overlapping_bodies():
 		if is_instance_of(body, type):
-			return body
-	return null
+			valid.append(body)
+	for area in get_overlapping_areas():
+		if is_instance_of(area, type):
+			valid.append(area)
+	return Utils.closest(valid, global_position)
 
 
 func is_detected() -> bool:

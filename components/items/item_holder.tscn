@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b8hcp4u1c2idr"]
+
+[ext_resource type="Script" uid="uid://djsw3pa4jfdan" path="res://components/items/item_holder.gd" id="1_ve12v"]
+[ext_resource type="PackedScene" uid="uid://b4k45sgy60srw" path="res://components/detectors/item_detector.tscn" id="2_poe4j"]
+
+[node name="ItemHolder" type="Node2D" unique_id=1892839364]
+script = ExtResource("1_ve12v")
+
+[node name="ItemDetector" parent="." unique_id=1784126620 instance=ExtResource("2_poe4j")]
+unique_name_in_owner = true

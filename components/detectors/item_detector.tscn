@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b4k45sgy60srw"]
+
+[ext_resource type="PackedScene" uid="uid://b7hbj5jq0p7i1" path="res://components/detectors/detector.tscn" id="1_15dhi"]
+[ext_resource type="Script" uid="uid://b01k2q8fsrk8s" path="res://components/detectors/item_detector.gd" id="2_2hesr"]
+[ext_resource type="Script" uid="uid://db65jqy2gl3sq" path="res://objects/items/item.gd" id="3_y27dm"]
+
+[node name="ItemDetector" unique_id=1784126620 instance=ExtResource("1_15dhi")]
+collision_mask = 8
+script = ExtResource("2_2hesr")
+type = ExtResource("3_y27dm")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=913706717]
+debug_color = Color(0.65471214, 0.5162575, 0.105650224, 0.41960785)

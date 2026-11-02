@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d2narm3wa62eg" path="res://entities/devotee.gd" id="1_odqxy"]
 [ext_resource type="Script" uid="uid://dm0t2kn6ajokt" path="res://components/state-machine/state_machine.gd" id="2_8btsr"]
 [ext_resource type="PackedScene" uid="uid://cduwv7qea3klt" path="res://components/sprites/sprite.tscn" id="3_fqo75"]
+[ext_resource type="PackedScene" uid="uid://b8hcp4u1c2idr" path="res://components/items/item_holder.tscn" id="4_rups4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_foqpk"]
 size = Vector2(32, 32)
@@ -29,3 +30,7 @@ color = Color(0.20274839, 0.36150444, 0.5944082, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=136812489]
 visible = false
 shape = SubResource("RectangleShape2D_foqpk")
+
+[node name="ItemHolder" parent="." unique_id=1892839364 instance=ExtResource("4_rups4")]
+unique_name_in_owner = true
+position = Vector2(0, -33)
