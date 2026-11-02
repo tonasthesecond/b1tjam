@@ -1,13 +1,9 @@
 [gd_scene format=3 uid="uid://bw6kf2d0qqyux"]
 
-[ext_resource type="Script" uid="uid://ivfxr0wtg8dy" path="res://components/detectors/devotee_detector.gd" id="1_ag0n1"]
+[ext_resource type="PackedScene" uid="uid://b7hbj5jq0p7i1" path="res://components/detectors/detector.tscn" id="1_ag0n1"]
+[ext_resource type="Script" uid="uid://ivfxr0wtg8dy" path="res://components/detectors/devotee_detector.gd" id="2_q0e3i"]
+[ext_resource type="Script" uid="uid://d2narm3wa62eg" path="res://entities/devotee.gd" id="3_dnno6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q0e3i"]
-radius = 128.0
-
-[node name="DevoteeDetector" type="Area2D" unique_id=603260639]
-collision_layer = 0
-script = ExtResource("1_ag0n1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1064772582]
-shape = SubResource("CircleShape2D_q0e3i")
+[node name="DevoteeDetector" unique_id=1784126620 instance=ExtResource("1_ag0n1")]
+script = ExtResource("2_q0e3i")
+type = ExtResource("3_dnno6")

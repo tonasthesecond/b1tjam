@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2narm3wa62eg" path="res://entities/devotee.gd" id="1_odqxy"]
 [ext_resource type="Script" uid="uid://dm0t2kn6ajokt" path="res://components/state-machine/state_machine.gd" id="2_8btsr"]
+[ext_resource type="PackedScene" uid="uid://cduwv7qea3klt" path="res://components/sprites/sprite.tscn" id="3_fqo75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_foqpk"]
 size = Vector2(32, 32)
@@ -14,10 +15,10 @@ unique_name_in_owner = true
 script = ExtResource("2_8btsr")
 metadata/_custom_type_script = "uid://dm0t2kn6ajokt"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2018853868]
+[node name="Sprite" parent="." unique_id=989566543 instance=ExtResource("3_fqo75")]
 unique_name_in_owner = true
 
-[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D" unique_id=2146032581]
+[node name="ColorRect" type="ColorRect" parent="Sprite" unique_id=2146032581]
 offset_left = -16.0
 offset_top = -16.0
 offset_right = 16.0

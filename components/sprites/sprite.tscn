@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cduwv7qea3klt"]
+
+[ext_resource type="Script" uid="uid://bs88wojsnxip4" path="res://components/sprites/sprite.gd" id="1_iuqej"]
+
+[node name="Sprite" type="AnimatedSprite2D" unique_id=989566543]
+script = ExtResource("1_iuqej")

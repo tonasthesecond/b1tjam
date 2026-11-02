@@ -1,7 +1,6 @@
-class_name CondState
+class_name CondBool
 extends Condition
 
-# Anything that answers a yes/no question: a state's is_done(), a cooldown's is_ready(), etc.
 var _question: Callable
 var _want: bool
 

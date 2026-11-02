@@ -1,0 +1,2 @@
+class_name Sprite
+extends AnimatedSprite2D

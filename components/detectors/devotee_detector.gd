@@ -1,13 +1,9 @@
 class_name DevoteeDetector
-extends Area2D
+extends Detector
 
 
-func get_devotee() -> Devotee:
-	for body in get_overlapping_bodies():
-		if body is Devotee:
-			return body
+func get_detected() -> Devotee:
+	var detected := super()
+	if detected != null:
+		return detected as Devotee
 	return null
-
-
-func sees() -> bool:
-	return get_devotee() != null

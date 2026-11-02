@@ -4,12 +4,12 @@ extends Timer
 var _duration: Stat
 
 
-func _init(duration: Stat = null) -> void:
+func _init(parent: Node, duration := Stat.new(1.0)) -> void:
 	_duration = duration
 	one_shot = true
+	parent.add_child(self)
 
 
-# Reads the stat fresh each time, so buffs apply to the next cooldown.
 func trigger() -> void:
 	start(_duration.get_value())
 
