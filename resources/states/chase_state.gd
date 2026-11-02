@@ -15,7 +15,7 @@ func _init(
 
 
 func update(_delta: float) -> void:
-	var devotee := _detector.get_devotee()
+	var devotee := _detector.get_detected()
 	if devotee == null:
 		return
 	var direction := _body.global_position.direction_to(devotee.global_position)

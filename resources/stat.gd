@@ -18,8 +18,8 @@ func _init(_base: float = 0.0, _min_value: float = -INF, _max_value: float = INF
 
 
 func get_value() -> float:
-	var total_bonus = Utils.sum_array(bonus)
-	var total_mult = 1.0 + Utils.sum_array(mult)
+	var total_bonus = Utils.sum(bonus)
+	var total_mult = 1.0 + Utils.sum(mult)
 	var value = (base + total_bonus) * total_mult
 	return clampf(value, min_value, max_value)
 

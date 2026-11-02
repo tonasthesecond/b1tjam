@@ -1,15 +1,3 @@
 [gd_scene format=3 uid="uid://ddtcjl2up5ash"]
 
-[ext_resource type="PackedScene" uid="uid://c5mh6i405xv6d" path="res://entities/devotee.tscn" id="1_wijl4"]
-[ext_resource type="PackedScene" uid="uid://d2wrg7v4r1504" path="res://entities/enemies/enemy.tscn" id="2_e0an3"]
-
 [node name="Map" type="Node" unique_id=175347258]
-
-[node name="Devotee" parent="." unique_id=590384946 instance=ExtResource("1_wijl4")]
-position = Vector2(413, 142)
-
-[node name="Shadow" parent="." unique_id=945603901 instance=ExtResource("2_e0an3")]
-position = Vector2(879, 505)
-
-[node name="Shadow2" parent="." unique_id=878498847 instance=ExtResource("2_e0an3")]
-position = Vector2(167, 433)
