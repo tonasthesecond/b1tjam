@@ -17,7 +17,6 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 [autoload]
 
 Utils="*uid://camovart2nhwo"
-Stats="*uid://tq2sfn88qx5i"
 Locator="*uid://c555vjwdtaw2s"
 
 [display]
@@ -53,4 +52,5 @@ interact={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

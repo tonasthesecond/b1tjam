@@ -1,6 +1,8 @@
 class_name Stat
 extends Resource
 
+signal value_changed(new_value: float)
+
 @export var base: float = 0.0:
 	set(new_value):
 		base = clampf(new_value, min_value, max_value)
@@ -26,10 +28,12 @@ func get_value() -> float:
 
 func add_bonus(b: float) -> void:
 	bonus.append(b)
+	value_changed.emit(get_value())
 
 
 func add_mult(m: float) -> void:
 	mult.append(m)
+	value_changed.emit(get_value())
 
 
 func clear_bonuses() -> void:
