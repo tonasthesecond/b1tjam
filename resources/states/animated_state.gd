@@ -1,4 +1,5 @@
-class_name AnimatedState extends State
+class_name AnimatedState
+extends State
 
 var _inner: State
 var _sprite: Sprite

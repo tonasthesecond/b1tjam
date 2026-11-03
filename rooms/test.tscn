@@ -4,20 +4,26 @@
 [ext_resource type="PackedScene" uid="uid://c5mh6i405xv6d" path="res://entities/devotee.tscn" id="2_yo7q2"]
 [ext_resource type="PackedScene" uid="uid://d2wrg7v4r1504" path="res://entities/enemies/enemy.tscn" id="3_tu2lb"]
 [ext_resource type="PackedScene" uid="uid://mhq2eqlgvgv6" path="res://objects/items/item.tscn" id="4_58jih"]
+[ext_resource type="PackedScene" uid="uid://c7llrrm4s81aq" path="res://interface/life_bar.tscn" id="5_tu2lb"]
 
 [node name="Room" unique_id=1497093105 instance=ExtResource("1_jy40g")]
 
-[node name="Devotee" parent="." index="0" unique_id=590384946 instance=ExtResource("2_yo7q2")]
+[node name="Devotee" parent="Entities" parent_id_path=PackedInt32Array(653175255) index="0" unique_id=590384946 instance=ExtResource("2_yo7q2")]
 position = Vector2(413, 142)
 
-[node name="Shadow" parent="." index="1" unique_id=945603901 instance=ExtResource("3_tu2lb")]
+[node name="Shadow" parent="Entities" parent_id_path=PackedInt32Array(653175255) index="1" unique_id=945603901 instance=ExtResource("3_tu2lb")]
 position = Vector2(879, 505)
 
-[node name="Shadow2" parent="." index="2" unique_id=2024612518 instance=ExtResource("3_tu2lb")]
+[node name="Shadow2" parent="Entities" parent_id_path=PackedInt32Array(653175255) index="2" unique_id=2024612518 instance=ExtResource("3_tu2lb")]
 position = Vector2(167, 433)
 
-[node name="Item" parent="." index="3" unique_id=177792563 instance=ExtResource("4_58jih")]
+[node name="Item" parent="Objects" parent_id_path=PackedInt32Array(232923056) index="0" unique_id=177792563 instance=ExtResource("4_58jih")]
 position = Vector2(758, 224)
 
-[node name="Item2" parent="." index="4" unique_id=1864441545 instance=ExtResource("4_58jih")]
+[node name="Item2" parent="Objects" parent_id_path=PackedInt32Array(232923056) index="1" unique_id=1864441545 instance=ExtResource("4_58jih")]
 position = Vector2(614, 330)
+
+[node name="LifeBar" parent="Interface" parent_id_path=PackedInt32Array(1148068440) index="0" unique_id=307651756 instance=ExtResource("5_tu2lb")]
+anchors_preset = -1
+anchor_bottom = 0.033950616
+metadata/_edit_use_anchors_ = true

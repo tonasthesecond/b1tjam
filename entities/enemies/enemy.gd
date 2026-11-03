@@ -1,6 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
+@export var data: EnemyData
 @onready var machine: StateMachine = %StateMachine
 @onready var sprite: Sprite = %Sprite
 @onready var detector: DevoteeDetector = %DevoteeDetector
@@ -9,10 +10,12 @@ var _idle_wait: RandomRangeStat
 
 
 func _ready() -> void:
-	var speed := Stats.get_stat(Stats.Name.SHADOW_SPEED)
-	var wander_radius := Stats.get_stat(Stats.Name.ENEMY_WANDER_RADIUS)
-	var idle_min := Stats.get_stat(Stats.Name.ENEMY_IDLE_MIN)
-	var idle_max := Stats.get_stat(Stats.Name.ENEMY_IDLE_MAX)
+	data = data.duplicate(true)
+
+	var speed := data.speed
+	var wander_radius := data.wander_radius
+	var idle_min := data.idle_min
+	var idle_max := data.idle_max
 
 	var wander_raw := WanderState.new(self, speed, wander_radius, global_position)
 

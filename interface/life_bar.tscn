@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c7llrrm4s81aq"]
+
+[ext_resource type="Script" uid="uid://drotgp1ot5wcx" path="res://interface/life_bar.gd" id="1_dth2t"]
+
+[node name="LifeBar" type="TextureProgressBar" unique_id=307651756]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+script = ExtResource("1_dth2t")
+
+[node name="Label" type="Label" parent="." unique_id=872426083]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100%"
+horizontal_alignment = 1

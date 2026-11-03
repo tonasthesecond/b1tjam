@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d2wrg7v4r1504"]
 
 [ext_resource type="Script" uid="uid://dgefhy4r1nxo1" path="res://entities/enemies/enemy.gd" id="1_k4ngg"]
+[ext_resource type="Resource" uid="uid://cnsvs4atutndp" path="res://resources/data/base_enemy_data.tres" id="2_twyc1"]
 [ext_resource type="Script" uid="uid://dm0t2kn6ajokt" path="res://components/state-machine/state_machine.gd" id="2_y0nuf"]
 [ext_resource type="PackedScene" uid="uid://bw6kf2d0qqyux" path="res://components/detectors/devotee_detector.tscn" id="3_y0nuf"]
 [ext_resource type="PackedScene" uid="uid://cduwv7qea3klt" path="res://components/sprites/sprite.tscn" id="4_msovg"]
@@ -10,6 +11,7 @@ size = Vector2(32, 32)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=945603901]
 script = ExtResource("1_k4ngg")
+data = ExtResource("2_twyc1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1897005441]
 visible = false

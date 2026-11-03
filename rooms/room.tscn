@@ -4,3 +4,12 @@
 
 [node name="Room" type="Node" unique_id=1497093105]
 script = ExtResource("1_nk0be")
+
+[node name="Entities" type="Node2D" parent="." unique_id=653175255]
+unique_name_in_owner = true
+
+[node name="Objects" type="Node2D" parent="." unique_id=232923056]
+unique_name_in_owner = true
+
+[node name="Interface" type="CanvasLayer" parent="." unique_id=1148068440]
+unique_name_in_owner = true
