@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://cduwv7qea3klt"]
 
 [ext_resource type="Script" uid="uid://bs88wojsnxip4" path="res://components/sprites/sprite.gd" id="1_iuqej"]
+[ext_resource type="Shader" uid="uid://c4swygepukgqa" path="res://resources/shaders/pixel_outline.gdshader" id="1_qwrv7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28hmf"]
+shader = ExtResource("1_qwrv7")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 1.0
 
 [node name="Sprite" type="AnimatedSprite2D" unique_id=989566543]
+material = SubResource("ShaderMaterial_28hmf")
+speed_scale = 0.667
 script = ExtResource("1_iuqej")
