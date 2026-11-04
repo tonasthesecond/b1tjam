@@ -1,7 +1,7 @@
 # class_name Locator
 extends Node
 
-enum ID { World, Devotee }
+enum ID { World, Devotee, Camera }
 
 var _register: Dictionary[ID, Node] = {}
 

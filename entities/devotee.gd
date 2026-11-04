@@ -1,11 +1,14 @@
 class_name Devotee
 extends CharacterBody2D
 
-@export var data: DevoteeData
+@export var data_template: DevoteeData
 @onready var machine: StateMachine = %StateMachine
 @onready var sprite: Sprite = %Sprite
 @onready var item_holder: ItemHolder = %ItemHolder
+@onready var melee_box: Hitbox = %Melee
+@onready var health: Health = %Health
 
+var data: DevoteeData
 var current_item: Item = null
 
 
@@ -15,11 +18,16 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	# Get data
+	data = data_template.duplicate(true)
+
 	# Setup nodes
 	item_holder.set_radius(data.pickup_range.get_value())
 	var life_drain := Ticker.new(self, Stat.new(1.0))
-	life_drain.ticked.connect(data.life.change.bind(-1.0))
-	data.life.depleted.connect(_on_life_depleted)
+	health.setup(data.max_life)
+	health.depleted.connect(_on_life_depleted)
+	life_drain.ticked.connect(health.damage.bind(1.0))
+	melee_box.set_damage(data.attack_damage.get_value())
 
 	# Set up the state machine
 	var speed := data.speed
@@ -55,6 +63,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			item_holder.drop(sprite.facing_vector())
 		else:
 			item_holder.try_pick_up()
+
+	if event.is_action_pressed(&"attack"):
+		melee_box.rotation = sprite.facing_vector().angle() - PI / 2.0
+		melee_box.activate(data.attack_duration.get_value())
 
 
 func _on_life_depleted() -> void:

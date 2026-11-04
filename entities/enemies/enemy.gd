@@ -1,16 +1,20 @@
 class_name Enemy
 extends CharacterBody2D
 
-@export var data: EnemyData
+@export var data_template: EnemyData
 @onready var machine: StateMachine = %StateMachine
 @onready var sprite: Sprite = %Sprite
 @onready var detector: DevoteeDetector = %DevoteeDetector
+@onready var health: Health = %Health
 
 var _idle_wait: RandomRangeStat
 
 
 func _ready() -> void:
-	data = data.duplicate(true)
+	var data: EnemyData = data_template.duplicate(true)
+
+	health.setup(data.max_life)
+	health.depleted.connect(_on_life_depleted)
 
 	var speed := data.speed
 	var wander_radius := data.wander_radius
@@ -34,3 +38,7 @@ func _ready() -> void:
 	machine.add_transition(wander, idle, [CondBool.new(wander_raw.is_arrived)])
 	machine.add_transition(idle, wander, [CondBool.new(idle_over)])
 	machine.start(idle)
+
+
+func _on_life_depleted() -> void:
+	queue_free()

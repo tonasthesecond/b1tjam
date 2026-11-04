@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://blk4fnsk4ecbx" path="res://assets/player/DEVOTEE_idle.png" id="4_ey5n3"]
 [ext_resource type="PackedScene" uid="uid://b8hcp4u1c2idr" path="res://components/items/item_holder.tscn" id="4_rups4"]
 [ext_resource type="Texture2D" uid="uid://b1bb44l3i0g66" path="res://assets/player/DEVOTEE_walk.png" id="6_mjg5p"]
+[ext_resource type="PackedScene" uid="uid://bnppf88aiulr4" path="res://components/combat/hurtbox.tscn" id="8_28hmf"]
+[ext_resource type="PackedScene" uid="uid://v2oc7g1wgcrh" path="res://components/combat/hitbox.tscn" id="9_3lmf2"]
+[ext_resource type="Script" uid="uid://cncrf7yyr0j5w" path="res://components/combat/health.gd" id="10_hlth"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1l5e6"]
 atlas = ExtResource("4_ey5n3")
@@ -166,9 +169,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_foqpk"]
 size = Vector2(32, 32)
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_eshnr"]
+points = PackedVector2Array(-8, 17, 8, 17, 5, 24, -5, 24)
+
 [node name="Devotee" type="CharacterBody2D" unique_id=590384946]
 script = ExtResource("1_odqxy")
-data = ExtResource("2_1l5e6")
+data_template = ExtResource("2_1l5e6")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1464528353]
 unique_name_in_owner = true
@@ -178,7 +184,7 @@ metadata/_custom_type_script = "uid://dm0t2kn6ajokt"
 [node name="Sprite" parent="." unique_id=989566543 instance=ExtResource("3_fqo75")]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_foqpk")
-animation = &"walk_up"
+animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=136812489]
 visible = false
@@ -188,3 +194,22 @@ shape = SubResource("RectangleShape2D_foqpk")
 unique_name_in_owner = true
 visible = false
 position = Vector2(0, -33)
+
+[node name="Hurtbox" parent="." unique_id=799552658 instance=ExtResource("8_28hmf")]
+collision_layer = 1
+
+[node name="Melee" parent="." unique_id=844706939 instance=ExtResource("9_3lmf2")]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 2
+start_active = false
+
+[node name="CollisionShape2D" parent="Melee" index="0" unique_id=57936595]
+shape = SubResource("ConvexPolygonShape2D_eshnr")
+
+[node name="Health" type="Node" parent="." unique_id=708516973 node_paths=PackedStringArray("hurtbox")]
+unique_name_in_owner = true
+script = ExtResource("10_hlth")
+hurtbox = NodePath("../Hurtbox")
+
+[editable path="Melee"]

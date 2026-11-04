@@ -2,7 +2,7 @@ class_name Item
 extends Area2D
 
 ## Higher = snappier follow, lower = floatier.
-@export var follow_smoothing: float = 10.0
+@export var follow_smoothing: float = 5.0
 ## Offset from the holder's global position that the item trails towards.
 @export var follow_offset: Vector2 = Vector2.ZERO
 ## Smoothing used when easing to the drop position.

@@ -5,7 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28hmf"]
 shader = ExtResource("1_qwrv7")
-shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(0.35686275, 0.39215687, 0.6039216, 1)
 shader_parameter/outline_width = 1.0
 
 [node name="Sprite" type="AnimatedSprite2D" unique_id=989566543]

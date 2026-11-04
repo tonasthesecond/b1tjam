@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bnppf88aiulr4"]
+
+[ext_resource type="Script" uid="uid://cb5g0pufkqmdn" path="res://components/combat/hurtbox.gd" id="1_s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+
+[node name="Hurtbox" type="Area2D" unique_id=198786746]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1244811069]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_1")
+debug_color = Color(0.2, 1, 0.4, 0.42)
