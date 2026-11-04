@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8u25dlcaf8vs"]
 
 [ext_resource type="Script" uid="uid://cwug6uhs6vwve" path="res://rooms/room.gd" id="1_nk0be"]
+[ext_resource type="Script" uid="uid://chuk2shrm8al3" path="res://components/camera/follow_camera.gd" id="2_fcam"]
 
 [node name="Room" type="Node" unique_id=1497093105]
 script = ExtResource("1_nk0be")
@@ -13,3 +14,7 @@ unique_name_in_owner = true
 
 [node name="Interface" type="CanvasLayer" parent="." unique_id=1148068440]
 unique_name_in_owner = true
+
+[node name="FollowCamera" type="Camera2D" parent="." unique_id=82487586]
+unique_name_in_owner = true
+script = ExtResource("2_fcam")

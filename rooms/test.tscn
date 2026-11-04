@@ -12,18 +12,22 @@
 position = Vector2(413, 142)
 
 [node name="Shadow" parent="Entities" parent_id_path=PackedInt32Array(653175255) index="1" unique_id=945603901 instance=ExtResource("3_tu2lb")]
-position = Vector2(879, 505)
+position = Vector2(434, 322)
 
 [node name="Shadow2" parent="Entities" parent_id_path=PackedInt32Array(653175255) index="2" unique_id=2024612518 instance=ExtResource("3_tu2lb")]
-position = Vector2(167, 433)
+position = Vector2(100, 281)
 
 [node name="Item" parent="Objects" parent_id_path=PackedInt32Array(232923056) index="0" unique_id=177792563 instance=ExtResource("4_58jih")]
 position = Vector2(758, 224)
 
 [node name="Item2" parent="Objects" parent_id_path=PackedInt32Array(232923056) index="1" unique_id=1864441545 instance=ExtResource("4_58jih")]
-position = Vector2(614, 330)
+position = Vector2(587, 235)
 
-[node name="LifeBar" parent="Interface" parent_id_path=PackedInt32Array(1148068440) index="0" unique_id=307651756 instance=ExtResource("5_tu2lb")]
+[node name="LifeBar" parent="Interface" parent_id_path=PackedInt32Array(1148068440) index="0" unique_id=307651756 node_paths=PackedStringArray("tracking") instance=ExtResource("5_tu2lb")]
 anchors_preset = -1
 anchor_bottom = 0.033950616
+tracking = NodePath("../../Entities/Devotee/Health")
 metadata/_edit_use_anchors_ = true
+
+[node name="FollowCamera" parent="." index="3" unique_id=82487586 node_paths=PackedStringArray("target")]
+target = NodePath("../Entities/Devotee")
