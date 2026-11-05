@@ -1,14 +1,18 @@
 class_name Devotee
 extends CharacterBody2D
 
-@export var data_template: DevoteeData
+@export var meter: Meter
+@export var speed: Stat
+@export var dash_speed: Stat
+@export var dash_duration: Stat
+@export var dash_cooldown_stat: Stat
+@export var pickup_range: Stat
+@export var attack_duration: Stat
 @onready var machine: StateMachine = %StateMachine
 @onready var sprite: Sprite = %Sprite
 @onready var item_holder: ItemHolder = %ItemHolder
 @onready var melee_box: Hitbox = %Melee
-@onready var health: Health = %Health
 
-var data: DevoteeData
 var current_item: Item = null
 
 
@@ -18,23 +22,14 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	# Get data
-	data = data_template.duplicate(true)
-
 	# Setup nodes
-	item_holder.set_radius(data.pickup_range.get_value())
-	var life_drain := Ticker.new(self, Stat.new(1.0))
-	health.setup(data.max_life)
-	health.depleted.connect(_on_life_depleted)
-	life_drain.ticked.connect(health.damage.bind(1.0))
-	melee_box.set_damage(data.attack_damage.get_value())
+	item_holder.set_radius(pickup_range.get_value())
+	var meter_drain := Ticker.new(self, Stat.new(1.0))
+	meter.depleted.connect(_on_meter_depleted)
+	meter_drain.ticked.connect(func() -> void: meter.change(-1.0))
 
 	# Set up the state machine
-	var speed := data.speed
-	var dash_speed := data.dash_speed
-	var dash_duration := data.dash_duration
-
-	var dash_cooldown := Cooldown.new(self, data.dash_cooldown)
+	var dash_cooldown := Cooldown.new(self, dash_cooldown_stat)
 	var dash_raw := DashState.new(self, dash_speed, dash_duration, dash_cooldown)
 
 	var idle := DirectionalAnimatedState.new(
@@ -66,8 +61,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed(&"attack"):
 		melee_box.rotation = sprite.facing_vector().angle() - PI / 2.0
-		melee_box.activate(data.attack_duration.get_value())
+		melee_box.activate(attack_duration.get_value())
 
 
-func _on_life_depleted() -> void:
+func _on_meter_depleted() -> void:
 	pass

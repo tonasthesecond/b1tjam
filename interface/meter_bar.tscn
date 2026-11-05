@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c7llrrm4s81aq"]
 
-[ext_resource type="Script" uid="uid://drotgp1ot5wcx" path="res://interface/life_bar.gd" id="1_dth2t"]
+[ext_resource type="Script" uid="uid://drotgp1ot5wcx" path="res://interface/meter_bar.gd" id="1_dth2t"]
 
-[node name="LifeBar" type="TextureProgressBar" unique_id=307651756]
+[node name="MeterBar" type="TextureProgressBar" unique_id=307651756]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 1.0

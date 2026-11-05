@@ -5,8 +5,10 @@ extends TimedArea
 
 signal hurt(hitbox: Hitbox)
 
-## Seconds of invincibility after a hit. 0 = none.
-@export var invincibility_time := 0.0
+## Drained by the damage of every hit. Optional.
+@export var meter: Meter
+## Seconds of invincibility after a hit. Null or 0 = none.
+@export var invincibility_time: Stat
 
 
 func _ready() -> void:
@@ -22,9 +24,11 @@ func _apply_active(value: bool) -> void:
 
 ## Returns true if the hit landed.
 func receive(hitbox: Hitbox) -> bool:
-	if not active:
+	if not active or (meter and meter.is_empty()):
 		return false
+	if meter:
+		meter.change(-hitbox.get_damage())
 	hurt.emit(hitbox)
-	if invincibility_time > 0.0:
-		deactivate(invincibility_time)
+	if invincibility_time and invincibility_time.get_value() > 0.0:
+		deactivate(invincibility_time.get_value())
 	return true
