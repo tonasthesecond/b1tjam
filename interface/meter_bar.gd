@@ -12,7 +12,7 @@ func _ready() -> void:
 		push_error("MeterBar: No Meter assigned.")
 		return
 	tracking.value_changed.connect(_on_changed)
-	_on_changed(tracking.current, tracking.max_stat.get_value())
+	_on_changed(tracking.current, tracking.get_max())
 
 
 func _on_changed(new_current: float, new_max: float) -> void:

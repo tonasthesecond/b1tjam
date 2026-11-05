@@ -37,6 +37,3 @@ func drop(facing: Vector2 = Vector2.DOWN) -> void:
 func is_holding() -> bool:
 	return held != null
 
-
-func set_radius(radius: float) -> void:
-	detector.set_radius(radius)

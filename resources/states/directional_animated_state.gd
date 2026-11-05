@@ -49,7 +49,7 @@ func update(delta: float) -> void:
 func _play(base_name: StringName) -> void:
 	if base_name == &"":
 		return
-	_sprite.play(StringName("%s_%s" % [base_name, _facing]))
+	_sprite.play_animation(StringName("%s_%s" % [base_name, _facing]))
 
 
 func _refresh_facing(delta: float) -> void:

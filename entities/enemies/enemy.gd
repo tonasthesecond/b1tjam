@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var machine: StateMachine = %StateMachine
 @onready var sprite: Sprite = %Sprite
 @onready var detector: DevoteeDetector = %DevoteeDetector
-@export var meter: Meter
+@onready var meter: Meter = %LifeMeter
 @onready var hurtbox: Hurtbox = %Hurtbox
 
 var _idle_wait: RandomRangeStat
@@ -37,7 +37,9 @@ func _ready() -> void:
 	# Knockback first so it wins over every other transition while active.
 	machine.add_transition(null, _knockback, [CondBool.new(_knockback.is_active)])
 	machine.add_transition(_knockback, idle, [CondBool.new(_knockback.is_active, false)])
-	machine.add_transition(null, chase, [CondBool.new(detector.is_detected), CondBool.new(_knockback.is_active, false)])
+	machine.add_transition(
+		null, chase, [CondBool.new(detector.is_detected), CondBool.new(_knockback.is_active, false)]
+	)
 	machine.add_transition(chase, idle, [CondBool.new(detector.is_detected, false)])
 	machine.add_transition(wander, idle, [CondBool.new(wander_raw.is_arrived)])
 	machine.add_transition(idle, wander, [CondBool.new(idle_over)])

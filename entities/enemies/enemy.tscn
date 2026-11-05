@@ -7,14 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://bnppf88aiulr4" path="res://components/combat/hurtbox.tscn" id="5_hurt"]
 [ext_resource type="PackedScene" uid="uid://v2oc7g1wgcrh" path="res://components/combat/hitbox.tscn" id="7_hit"]
 [ext_resource type="PackedScene" uid="uid://c7llrrm4s81aq" path="res://interface/meter_bar.tscn" id="8_gj3y3"]
+[ext_resource type="Script" path="res://components/meter/meter.gd" id="meter_script"]
+[ext_resource type="Resource" path="res://resources/stats/enemy/attack_damage.tres" id="s_attack_damage"]
+[ext_resource type="Resource" path="res://resources/stats/enemy/idle_max.tres" id="s_idle_max"]
+[ext_resource type="Resource" path="res://resources/stats/enemy/idle_min.tres" id="s_idle_min"]
+[ext_resource type="Resource" path="res://resources/stats/enemy/invincibility_time.tres" id="s_invincibility_time"]
+[ext_resource type="Resource" path="res://resources/stats/enemy/max_life.tres" id="s_max_life"]
+[ext_resource type="Resource" path="res://resources/stats/enemy/sight_range.tres" id="s_sight_range"]
 [ext_resource type="Resource" path="res://resources/stats/enemy/speed.tres" id="s_speed"]
 [ext_resource type="Resource" path="res://resources/stats/enemy/wander_radius.tres" id="s_wander_radius"]
-[ext_resource type="Resource" path="res://resources/stats/enemy/idle_min.tres" id="s_idle_min"]
-[ext_resource type="Resource" path="res://resources/stats/enemy/idle_max.tres" id="s_idle_max"]
-[ext_resource type="Resource" path="res://resources/stats/enemy/max_life.tres" id="s_max_life"]
-[ext_resource type="Resource" path="res://resources/stats/enemy/attack_damage.tres" id="s_attack_damage"]
-[ext_resource type="Resource" path="res://resources/stats/enemy/invincibility_time.tres" id="s_invincibility_time"]
-[ext_resource type="Script" uid="uid://c3ct2cpy5nnnd" path="res://resources/stats/meter.gd" id="meter_script"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a76ru"]
 size = Vector2(32, 32)
@@ -25,20 +26,19 @@ radius = 13.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_hit"]
 radius = 14.0
 
-[sub_resource type="Resource" id="Resource_meter"]
-script = ExtResource("meter_script")
-max_stat = ExtResource("s_max_life")
-metadata/_custom_type_script = "uid://c3ct2cpy5nnnd"
-
 [node name="Enemy" type="CharacterBody2D" unique_id=945603901]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_k4ngg")
-meter = SubResource("Resource_meter")
 speed = ExtResource("s_speed")
 wander_radius = ExtResource("s_wander_radius")
 idle_min = ExtResource("s_idle_min")
 idle_max = ExtResource("s_idle_max")
+
+[node name="LifeMeter" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("meter_script")
+max_stat = ExtResource("s_max_life")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1897005441]
 visible = false
@@ -51,6 +51,7 @@ metadata/_custom_type_script = "uid://dm0t2kn6ajokt"
 
 [node name="DevoteeDetector" parent="." unique_id=603260639 instance=ExtResource("3_y0nuf")]
 unique_name_in_owner = true
+detection_range = ExtResource("s_sight_range")
 
 [node name="Sprite" parent="." unique_id=989566543 instance=ExtResource("4_msovg")]
 unique_name_in_owner = true
@@ -63,11 +64,11 @@ offset_bottom = 12.0
 pivot_offset = Vector2(117, 295)
 color = Color(0.6394734, 0.14835653, 0.22066972, 1)
 
-[node name="Hurtbox" parent="." unique_id=228095946 instance=ExtResource("5_hurt")]
+[node name="Hurtbox" parent="." unique_id=228095946 node_paths=PackedStringArray("meter") instance=ExtResource("5_hurt")]
 unique_name_in_owner = true
 collision_layer = 2
+meter = NodePath("../LifeMeter")
 invincibility_time = ExtResource("s_invincibility_time")
-meter = SubResource("Resource_meter")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1244811069]
 shape = SubResource("CircleShape2D_gj3y3")
@@ -76,17 +77,17 @@ shape = SubResource("CircleShape2D_gj3y3")
 unique_name_in_owner = true
 collision_layer = 16
 collision_mask = 1
-continuous = true
 damage = ExtResource("s_attack_damage")
+continuous = true
 
 [node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=57936595]
 shape = SubResource("CircleShape2D_hit")
 
-[node name="MeterBar" parent="." unique_id=307651756 instance=ExtResource("8_gj3y3")]
+[node name="MeterBar" parent="." unique_id=307651756 node_paths=PackedStringArray("tracking") instance=ExtResource("8_gj3y3")]
 offset_top = -27.0
 offset_right = 1.0
 offset_bottom = -26.0
-tracking = SubResource("Resource_meter")
+tracking = NodePath("../LifeMeter")
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

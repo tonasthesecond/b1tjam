@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Meter" format=3]
-
-[ext_resource type="Script" uid="uid://c3ct2cpy5nnnd" path="res://resources/stats/meter.gd" id="1_meter"]
-[ext_resource type="Resource" path="res://resources/stats/devotee/max_life.tres" id="2_max"]
-
-[resource]
-script = ExtResource("1_meter")
-max_stat = ExtResource("2_max")
-metadata/_custom_type_script = "uid://c3ct2cpy5nnnd"

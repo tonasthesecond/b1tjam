@@ -1,13 +1,12 @@
 class_name Devotee
 extends CharacterBody2D
 
-@export var meter: Meter
 @export var speed: Stat
 @export var dash_speed: Stat
 @export var dash_duration: Stat
 @export var dash_cooldown_stat: Stat
-@export var pickup_range: Stat
 @export var attack_duration: Stat
+@onready var meter: Meter = %LifeMeter
 @onready var machine: StateMachine = %StateMachine
 @onready var sprite: Sprite = %Sprite
 @onready var item_holder: ItemHolder = %ItemHolder
@@ -23,7 +22,6 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	# Setup nodes
-	item_holder.set_radius(pickup_range.get_value())
 	var meter_drain := Ticker.new(self, Stat.new(1.0))
 	meter.depleted.connect(_on_meter_depleted)
 	meter_drain.ticked.connect(func() -> void: meter.change(-1.0))

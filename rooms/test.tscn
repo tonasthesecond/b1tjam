@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://d2wrg7v4r1504" path="res://entities/enemies/enemy.tscn" id="3_tu2lb"]
 [ext_resource type="PackedScene" uid="uid://mhq2eqlgvgv6" path="res://objects/items/item.tscn" id="4_58jih"]
 [ext_resource type="PackedScene" uid="uid://c7llrrm4s81aq" path="res://interface/meter_bar.tscn" id="5_tu2lb"]
-[ext_resource type="Resource" path="res://resources/stats/devotee/life_meter.tres" id="6_gdiw3"]
 
 [node name="Room" unique_id=1497093105 instance=ExtResource("1_jy40g")]
 
@@ -24,10 +23,10 @@ position = Vector2(758, 224)
 [node name="Item2" parent="Objects" parent_id_path=PackedInt32Array(232923056) index="1" unique_id=1864441545 instance=ExtResource("4_58jih")]
 position = Vector2(587, 235)
 
-[node name="MeterBar" parent="Interface" parent_id_path=PackedInt32Array(1148068440) index="0" unique_id=307651756 instance=ExtResource("5_tu2lb")]
+[node name="MeterBar" parent="Interface" parent_id_path=PackedInt32Array(1148068440) index="0" unique_id=307651756 node_paths=PackedStringArray("tracking") instance=ExtResource("5_tu2lb")]
 anchors_preset = -1
 anchor_bottom = 0.033950616
-tracking = ExtResource("6_gdiw3")
+tracking = NodePath("../../Entities/Devotee/LifeMeter")
 metadata/_edit_use_anchors_ = true
 
 [node name="FollowCamera" parent="." index="3" unique_id=82487586 node_paths=PackedStringArray("target")]

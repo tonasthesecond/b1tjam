@@ -23,13 +23,13 @@ func _init(
 func enter() -> void:
 	_inner.enter()
 	if _enter_animation != &"":
-		_sprite.play(_enter_animation)
+		_sprite.play_animation(_enter_animation)
 
 
 func exit() -> void:
 	_inner.exit()
 	if _exit_animation != &"":
-		_sprite.play(_exit_animation)
+		_sprite.play_animation(_exit_animation)
 
 
 func update(delta: float) -> void:

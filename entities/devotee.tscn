@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b1bb44l3i0g66" path="res://assets/player/DEVOTEE_walk.png" id="6_mjg5p"]
 [ext_resource type="PackedScene" uid="uid://bnppf88aiulr4" path="res://components/combat/hurtbox.tscn" id="8_28hmf"]
 [ext_resource type="PackedScene" uid="uid://v2oc7g1wgcrh" path="res://components/combat/hitbox.tscn" id="9_3lmf2"]
+[ext_resource type="Script" path="res://components/meter/meter.gd" id="meter_script"]
+[ext_resource type="Resource" path="res://resources/stats/devotee/max_life.tres" id="s_max_life"]
 [ext_resource type="Resource" path="res://resources/stats/devotee/attack_damage.tres" id="s_attack_damage"]
 [ext_resource type="Resource" path="res://resources/stats/devotee/attack_duration.tres" id="s_attack_duration"]
 [ext_resource type="Resource" path="res://resources/stats/devotee/attack_knockback.tres" id="s_attack_knockback"]
@@ -15,10 +17,8 @@
 [ext_resource type="Resource" path="res://resources/stats/devotee/dash_duration.tres" id="s_dash_duration"]
 [ext_resource type="Resource" path="res://resources/stats/devotee/dash_speed.tres" id="s_dash_speed"]
 [ext_resource type="Resource" path="res://resources/stats/devotee/invincibility_time.tres" id="s_invincibility_time"]
-[ext_resource type="Resource" path="res://resources/stats/devotee/max_life.tres" id="s_max_life"]
 [ext_resource type="Resource" path="res://resources/stats/devotee/pickup_range.tres" id="s_pickup_range"]
 [ext_resource type="Resource" path="res://resources/stats/devotee/speed.tres" id="s_speed"]
-[ext_resource type="Resource" path="res://resources/stats/devotee/life_meter.tres" id="life_meter"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1l5e6"]
 atlas = ExtResource("4_ey5n3")
@@ -183,13 +183,16 @@ points = PackedVector2Array(-17, 15, 17, 15, 5, 24, -5, 24)
 
 [node name="Devotee" type="CharacterBody2D" unique_id=590384946]
 script = ExtResource("1_odqxy")
-meter = ExtResource("life_meter")
 speed = ExtResource("s_speed")
 dash_speed = ExtResource("s_dash_speed")
 dash_duration = ExtResource("s_dash_duration")
 dash_cooldown_stat = ExtResource("s_dash_cooldown")
-pickup_range = ExtResource("s_pickup_range")
 attack_duration = ExtResource("s_attack_duration")
+
+[node name="LifeMeter" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("meter_script")
+max_stat = ExtResource("s_max_life")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1464528353]
 unique_name_in_owner = true
@@ -210,10 +213,13 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(0, -33)
 
-[node name="Hurtbox" parent="." unique_id=799552658 instance=ExtResource("8_28hmf")]
+[node name="ItemDetector" parent="ItemHolder" index="0" unique_id=1784126620]
+detection_range = ExtResource("s_pickup_range")
+
+[node name="Hurtbox" parent="." unique_id=799552658 node_paths=PackedStringArray("meter") instance=ExtResource("8_28hmf")]
 collision_layer = 1
+meter = NodePath("../LifeMeter")
 invincibility_time = ExtResource("s_invincibility_time")
-meter = ExtResource("life_meter")
 
 [node name="Melee" parent="." unique_id=844706939 instance=ExtResource("9_3lmf2")]
 unique_name_in_owner = true
@@ -226,4 +232,5 @@ start_active = false
 [node name="CollisionShape2D" parent="Melee" index="0" unique_id=57936595]
 shape = SubResource("ConvexPolygonShape2D_eshnr")
 
+[editable path="ItemHolder"]
 [editable path="Melee"]
