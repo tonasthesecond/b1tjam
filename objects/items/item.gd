@@ -41,6 +41,12 @@ func hold(_holder: ItemHolder) -> void:
 	monitorable = false
 
 
+## Jump straight to the holder instead of trailing in.
+func snap_to_holder() -> void:
+	if holder != null:
+		global_position = holder.global_position + follow_offset
+
+
 func drop(new_pos: Vector2) -> void:
 	holder = null
 	_drop_target = new_pos

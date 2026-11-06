@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://cshcvir2881gm" path="res://rooms/main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://c5mh6i405xv6d" path="res://entities/devotee.tscn" id="2_devotee"]
+[ext_resource type="Script" uid="uid://chuk2shrm8al3" path="res://components/camera/follow_camera.gd" id="3_fcam"]
+[ext_resource type="PackedScene" uid="uid://c7llrrm4s81aq" path="res://interface/meter_bar.tscn" id="4_bar"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray()]
+script = ExtResource("1_main")
+start_room = "res://rooms/test.tscn"
+
+[node name="World" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Devotee" parent="." instance=ExtResource("2_devotee")]
+unique_name_in_owner = true
+position = Vector2(413, 142)
+
+[node name="FollowCamera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+unique_name_in_owner = true
+script = ExtResource("3_fcam")
+target = NodePath("../Devotee")
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="MeterBar" parent="Interface" node_paths=PackedStringArray("tracking") instance=ExtResource("4_bar")]
+anchors_preset = -1
+anchor_bottom = 0.033950616
+tracking = NodePath("../../Devotee/LifeMeter")
+metadata/_edit_use_anchors_ = true

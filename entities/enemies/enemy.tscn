@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnppf88aiulr4" path="res://components/combat/hurtbox.tscn" id="5_hurt"]
 [ext_resource type="PackedScene" uid="uid://v2oc7g1wgcrh" path="res://components/combat/hitbox.tscn" id="7_hit"]
 [ext_resource type="PackedScene" uid="uid://c7llrrm4s81aq" path="res://interface/meter_bar.tscn" id="8_gj3y3"]
-[ext_resource type="Script" path="res://components/meter/meter.gd" id="meter_script"]
+[ext_resource type="Script" uid="uid://bd6t3pim7tmlg" path="res://components/meter/meter.gd" id="meter_script"]
 [ext_resource type="Resource" path="res://resources/stats/enemy/attack_damage.tres" id="s_attack_damage"]
 [ext_resource type="Resource" path="res://resources/stats/enemy/idle_max.tres" id="s_idle_max"]
 [ext_resource type="Resource" path="res://resources/stats/enemy/idle_min.tres" id="s_idle_min"]
@@ -28,14 +28,14 @@ radius = 14.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=945603901]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 6
 script = ExtResource("1_k4ngg")
 speed = ExtResource("s_speed")
 wander_radius = ExtResource("s_wander_radius")
 idle_min = ExtResource("s_idle_min")
 idle_max = ExtResource("s_idle_max")
 
-[node name="LifeMeter" type="Node" parent="."]
+[node name="LifeMeter" type="Node" parent="." unique_id=1878972291]
 unique_name_in_owner = true
 script = ExtResource("meter_script")
 max_stat = ExtResource("s_max_life")

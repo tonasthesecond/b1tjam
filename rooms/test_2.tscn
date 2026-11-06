@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://b8u25dlcaf8vs" path="res://rooms/room.tscn" id="1_room"]
+[ext_resource type="PackedScene" uid="uid://d2wrg7v4r1504" path="res://entities/enemies/enemy.tscn" id="2_enemy"]
+[ext_resource type="PackedScene" path="res://objects/door/door.tscn" id="3_door"]
+
+[node name="Test2" instance=ExtResource("1_room")]
+
+[node name="Shadow" parent="Entities" instance=ExtResource("2_enemy")]
+position = Vector2(300, 100)
+
+[node name="ToTest" parent="Doors" instance=ExtResource("3_door")]
+position = Vector2(200, 300)
+target_room = "res://rooms/test.tscn"
+link = &"test_test2"

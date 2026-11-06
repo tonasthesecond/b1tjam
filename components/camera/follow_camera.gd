@@ -17,7 +17,13 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	if target == null:
 		target = Locator.ref(Locator.ID.Devotee) as Node2D
-	if target and snap_on_ready:
+	if snap_on_ready:
+		snap()
+
+
+## Jump straight to the target.
+func snap() -> void:
+	if is_instance_valid(target):
 		global_position = target.global_position
 
 
