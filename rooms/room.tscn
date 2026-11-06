@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://b8u25dlcaf8vs"]
 
 [ext_resource type="Script" uid="uid://cwug6uhs6vwve" path="res://rooms/room.gd" id="1_nk0be"]
+[ext_resource type="TileSet" path="res://resources/tilesets/room_tiles.tres" id="2_tiles"]
 
 [node name="Room" type="Node" unique_id=1497093105]
 script = ExtResource("1_nk0be")
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+tile_set = ExtResource("2_tiles")
 
 [node name="Entities" type="Node2D" parent="." unique_id=653175255]
 unique_name_in_owner = true
