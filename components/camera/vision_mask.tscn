@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://c773sjrgqrh8g" path="res://components/camera/vision_mask.gd" id="1_mask"]
+[ext_resource type="Shader" uid="uid://b2rqr0bsjcip7" path="res://resources/shaders/vision_mask.gdshader" id="2_shader"]
+[ext_resource type="Resource" path="res://resources/stats/camera/vision_radius.tres" id="3_radius"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mask"]
+shader = ExtResource("2_shader")
+
+[node name="VisionMask" type="CanvasLayer"]
+
+[node name="Mask" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mask")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_mask")
+radius = ExtResource("3_radius")
