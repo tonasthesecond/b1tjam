@@ -9,6 +9,7 @@ extends Node
 
 var _rooms: Dictionary[String, Room] = {}
 var _current: Room = null
+var _moved_frame := -1
 
 @onready var world: Node = %World
 @onready var devotee: Devotee = %Devotee
@@ -32,24 +33,36 @@ func _notification(what: int) -> void:
 
 
 func go_to(path: String, link: StringName) -> void:
+	_moved_frame = Engine.get_physics_frames()
 	var next := _get_room(path)
-	var held := devotee.item_holder.held
 	if next != _current:
-		# Enter the new room before leaving the old one, the Devotee and its item are carried over
-		world.add_child(next)
-		devotee.reparent(next.entities, false)
-		if held:
-			held.reparent(next.objects, false)
-		if _current:
-			world.remove_child(_current)
-		_current = next
+		_carry_over(next)
 	if link:
 		var door := next.find_door(link)
 		if door:
 			devotee.global_position = door.spawn.global_position
+	var held := devotee.item_holder.held
 	if held:
 		held.snap_to_holder()
 	camera.snap()
+
+
+## Kinematic bodies teleport a physics step late, so right after a transition
+## the new room's doors can still see the Devotee at its old position.
+func is_settling() -> bool:
+	return Engine.get_physics_frames() - _moved_frame < 2
+
+
+## Enters the next room before leaving the old one, carrying over the Devotee and its held item.
+func _carry_over(next: Room) -> void:
+	world.add_child(next)
+	devotee.reparent(next.entities, false)
+	var held := devotee.item_holder.held
+	if held:
+		held.reparent(next.objects, false)
+	if _current:
+		world.remove_child(_current)
+	_current = next
 
 
 func _get_room(path: String) -> Room:

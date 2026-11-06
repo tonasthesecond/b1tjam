@@ -7,14 +7,14 @@
 
 [node name="Main" type="Node" node_paths=PackedStringArray()]
 script = ExtResource("1_main")
-start_room = "res://rooms/test.tscn"
+start_room = "res://rooms/hub.tscn"
 
 [node name="World" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="Devotee" parent="." instance=ExtResource("2_devotee")]
 unique_name_in_owner = true
-position = Vector2(413, 142)
+position = Vector2(224, 224)
 
 [node name="FollowCamera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 unique_name_in_owner = true

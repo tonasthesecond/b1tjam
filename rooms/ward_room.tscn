@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://b8u25dlcaf8vs" path="res://rooms/room.tscn" id="1_room"]
+[ext_resource type="PackedScene" path="res://objects/door/door.tscn" id="2_door"]
+[ext_resource type="Texture2D" uid="uid://cjqpvklv02g7g" path="res://assets/map_plan.png" id="3_plan"]
+
+[node name="WardRoom" instance=ExtResource("1_room")]
+
+[node name="Background" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_plan")
+centered = false
+scale = Vector2(2, 2)
+region_enabled = true
+region_rect = Rect2(652, 164, 128, 128)
+
+[node name="ToWardShortcut" parent="Doors" instance=ExtResource("2_door")]
+position = Vector2(127, -16)
+target_room = "res://rooms/ward_shortcut.tscn"
+link = &"ward_room_ward_shortcut"
+
+[node name="Spawn" parent="Doors/ToWardShortcut"]
+position = Vector2(1, 36)
+
+[node name="ToEastHall" parent="Doors" instance=ExtResource("2_door")]
+position = Vector2(128, 272)
+target_room = "res://rooms/east_hall.tscn"
+link = &"east_hall_ward_room"
+
+[node name="Spawn" parent="Doors/ToEastHall"]
+position = Vector2(0, -36)

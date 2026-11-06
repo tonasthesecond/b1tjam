@@ -15,6 +15,6 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Devotee:
-		var main := Locator.ref(Locator.ID.Main) as Main
+	var main := Locator.ref(Locator.ID.Main) as Main
+	if body is Devotee and not main.is_settling():
 		main.go_to.call_deferred(target_room, link)

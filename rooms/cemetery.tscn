@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dqdxv3we06xjj"]
+
+[ext_resource type="PackedScene" uid="uid://b8u25dlcaf8vs" path="res://rooms/room.tscn" id="1_room"]
+[ext_resource type="PackedScene" path="res://objects/door/door.tscn" id="2_door"]
+[ext_resource type="Texture2D" uid="uid://cjqpvklv02g7g" path="res://assets/map_plan.png" id="3_plan"]
+
+[node name="Cemetery" unique_id=1729853776 instance=ExtResource("1_room")]
+
+[node name="Background" type="Sprite2D" parent="." index="0" unique_id=270453506]
+scale = Vector2(2, 2)
+texture = ExtResource("3_plan")
+centered = false
+region_enabled = true
+region_rect = Rect2(412, 452, 192, 288)
+
+[node name="ToHub" parent="Doors" index="0" unique_id=1934392731 instance=ExtResource("2_door")]
+position = Vector2(192, -16)
+target_room = "res://rooms/hub.tscn"
+link = &"cemetery_hub"
