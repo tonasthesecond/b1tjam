@@ -6,7 +6,7 @@
 [node name="Room" type="Node" unique_id=1497093105]
 script = ExtResource("1_nk0be")
 
-[node name="Tiles" type="TileMapLayer" parent="."]
+[node name="Tiles" type="TileMapLayer" parent="." unique_id=231177038]
 unique_name_in_owner = true
 scale = Vector2(2, 2)
 tile_set = ExtResource("2_tiles")
@@ -17,5 +17,5 @@ unique_name_in_owner = true
 [node name="Objects" type="Node2D" parent="." unique_id=232923056]
 unique_name_in_owner = true
 
-[node name="Doors" type="Node2D" parent="."]
+[node name="Doors" type="Node2D" parent="." unique_id=1345792368]
 unique_name_in_owner = true
