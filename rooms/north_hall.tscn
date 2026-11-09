@@ -1,38 +1,32 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://c155ciuje0r0k"]
 
 [ext_resource type="PackedScene" uid="uid://b8u25dlcaf8vs" path="res://rooms/room.tscn" id="1_room"]
 [ext_resource type="PackedScene" path="res://objects/door/door.tscn" id="2_door"]
 [ext_resource type="Texture2D" uid="uid://cjqpvklv02g7g" path="res://assets/map_plan.png" id="3_plan"]
 
-[node name="NorthHall" instance=ExtResource("1_room")]
+[node name="NorthHall" unique_id=23224969 instance=ExtResource("1_room")]
 
-[node name="Background" type="Sprite2D" parent="." index="0"]
+[node name="Background" type="Sprite2D" parent="." index="0" unique_id=12222804]
+scale = Vector2(2, 2)
 texture = ExtResource("3_plan")
 centered = false
-scale = Vector2(2, 2)
 region_enabled = true
 region_rect = Rect2(828, 68, 32, 224)
 
-[node name="ToWardShortcut" parent="Doors" instance=ExtResource("2_door")]
+[node name="Tiles" parent="." index="1"]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAAAAAcAAAABAAEAAAAAAAgAAAABAAEAAAABAAgAAAABAAEAAAABAAkAAAABAAEAAAABAAoAAAABAAEAAAABAAsAAAABAAEAAAABAAAAAAABAAEAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAABAAEAAAABAAQAAAABAAEAAAABAAUAAAABAAEAAAABAAYAAAABAAEAAAAAAAkAAAABAAEAAAAAAAoAAAABAAEAAAAAAAsAAAABAAEAAAAAAAwAAAABAAEAAAABAAcAAAABAAEAAAABAAwAAAABAAEAAAABAA0AAAABAAEAAAAAAA0AAAABAAEAAAD//wIAAAABAAMAAAACAAIAAAAAAAMAAAD//wMAAAAAAAEAAAD//wwAAAAAAAEAAAD//wQAAAAAAAEAAAD//wUAAAAAAAEAAAD//wYAAAAAAAEAAAD//wcAAAAAAAEAAAD//wgAAAAAAAEAAAD//wkAAAAAAAEAAAD//woAAAAAAAEAAAD//wsAAAAAAAEAAAACAAMAAAACAAEAAAACAAQAAAACAAEAAAACAAUAAAACAAEAAAACAAYAAAACAAEAAAACAAcAAAACAAEAAAACAAgAAAACAAEAAAACAAkAAAACAAEAAAACAAoAAAACAAEAAAACAAsAAAACAAEAAAACAAwAAAACAAEAAAD//w0AAAAAAAEAAAD//w4AAAAAAAEAAAACAA0AAAACAAEAAAACAA4AAAACAAEAAAAAAA4AAAABAAEAAAABAA4AAAABAAEAAAD//w8AAAAAAAEAAAD//xAAAAAAAAEAAAABAA8AAAABAAEAAAABABAAAAABAAEAAAAAABAAAAABAAEAAAAAAA8AAAABAAEAAAACAA8AAAACAAEAAAACABAAAAACAAEAAAD+/wEAAAABAAEAAAD//wEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAADAAAAAAABAAEAAAACAAAAAAABAAEAAAD//wAAAAABAAEAAAD+/wAAAAABAAEAAAD9/wIAAAABAAIAAAD+/wIAAAABAAIAAAADAAIAAAABAAIAAAAEAAIAAAABAAIAAAD9/wAAAAABAAEAAAD9/wEAAAABAAEAAAAEAAAAAAABAAEAAAAEAAEAAAABAAEAAAAAAP//AAABAAEAAAABAP//AAABAAEAAAABAP7/AAABAAEAAAAAAP7/AAABAAEAAAABAP3/AAABAAEAAAAAAP3/AAABAAEAAAD/////AAABAAQAAAACAP//AAAAAAQAAAD+////AAABAAAAAAD9////AAABAAAAAAADAP//AAABAAAAAAAEAP//AAABAAAAAAACAP7/AAACAAEAAAACAP3/AAACAAEAAAD///3/AAAAAAEAAAD///7/AAAAAAEAAAA=")
+
+[node name="ToWardShortcut" parent="Doors" index="0" unique_id=1244818687 instance=ExtResource("2_door")]
 position = Vector2(-16, 32)
 target_room = "res://rooms/ward_shortcut.tscn"
 link = &"north_hall_ward_shortcut"
 
-[node name="Spawn" parent="Doors/ToWardShortcut"]
-position = Vector2(36, 0)
-
-[node name="ToCorpseDump" parent="Doors" instance=ExtResource("2_door")]
+[node name="ToCorpseDump" parent="Doors" index="1" unique_id=1027649258 instance=ExtResource("2_door")]
 position = Vector2(80, 32)
 target_room = "res://rooms/corpse_dump.tscn"
 link = &"corpse_dump_north_hall"
 
-[node name="Spawn" parent="Doors/ToCorpseDump"]
-position = Vector2(-36, 0)
-
-[node name="ToEastHall" parent="Doors" instance=ExtResource("2_door")]
+[node name="ToEastHall" parent="Doors" index="2" unique_id=1483139273 instance=ExtResource("2_door")]
 position = Vector2(32, 464)
 target_room = "res://rooms/east_hall.tscn"
 link = &"east_hall_north_hall"
-
-[node name="Spawn" parent="Doors/ToEastHall"]
-position = Vector2(0, -36)

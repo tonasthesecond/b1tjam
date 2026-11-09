@@ -1,54 +1,42 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://byyn2frr866vf"]
 
 [ext_resource type="PackedScene" uid="uid://b8u25dlcaf8vs" path="res://rooms/room.tscn" id="1_room"]
 [ext_resource type="PackedScene" path="res://objects/door/door.tscn" id="2_door"]
 [ext_resource type="Texture2D" uid="uid://cjqpvklv02g7g" path="res://assets/map_plan.png" id="3_plan"]
 
-[node name="EastHall" instance=ExtResource("1_room")]
+[node name="EastHall" unique_id=1283296799 instance=ExtResource("1_room")]
 
-[node name="Background" type="Sprite2D" parent="." index="0"]
+[node name="Background" type="Sprite2D" parent="." index="0" unique_id=1090012497]
+scale = Vector2(2, 2)
 texture = ExtResource("3_plan")
 centered = false
-scale = Vector2(2, 2)
 region_enabled = true
 region_rect = Rect2(636, 308, 240, 32)
 
-[node name="ToNorthHall" parent="Doors" instance=ExtResource("2_door")]
+[node name="Tiles" parent="." index="1"]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAGAAEAAAABAAEAAAAHAAEAAAABAAEAAAAIAAEAAAABAAEAAAAJAAEAAAABAAEAAAAKAAEAAAABAAEAAAALAAEAAAABAAEAAAAMAAEAAAABAAEAAAANAAEAAAABAAEAAAAOAAEAAAABAAEAAAAOAAAAAAABAAEAAAANAAAAAAABAAEAAAAMAAAAAAABAAEAAAALAAAAAAABAAEAAAAKAAAAAAABAAEAAAAJAAAAAAABAAEAAAAIAAAAAAABAAEAAAAHAAAAAAABAAEAAAAGAAAAAAABAAEAAAAFAAEAAAABAAEAAAAEAAEAAAABAAEAAAADAAEAAAABAAEAAAACAAEAAAABAAEAAAABAAEAAAABAAEAAAAAAAEAAAABAAEAAAAGAAIAAAAAAAMAAAADAAIAAAABAAMAAAADAP//AAABAAQAAAAGAP//AAAAAAQAAAAOAP//AAAAAAQAAAALAP//AAABAAQAAAAMAP//AAABAAEAAAANAP//AAABAAEAAAAMAP7/AAABAAEAAAANAP7/AAABAAEAAAAEAP//AAABAAEAAAAFAP//AAABAAEAAAAFAAIAAAABAAEAAAAEAAIAAAABAAEAAAAEAAMAAAABAAEAAAAFAAMAAAABAAEAAAAEAP7/AAABAAEAAAAFAP7/AAABAAEAAAAHAAIAAAABAAIAAAAIAAIAAAABAAIAAAAJAAIAAAABAAIAAAAKAAIAAAABAAIAAAALAAIAAAABAAIAAAAMAAIAAAABAAIAAAANAAIAAAABAAIAAAAOAAIAAAABAAIAAAACAAIAAAABAAIAAAABAAIAAAABAAIAAAAAAAIAAAABAAIAAAD//wIAAAABAAIAAAD+/wIAAAABAAIAAAD9/wIAAAABAAIAAAD//wEAAAABAAEAAAD+/wEAAAABAAEAAAD9/wEAAAABAAEAAAD9/wAAAAABAAEAAAD+/wAAAAABAAEAAAD//wAAAAABAAEAAAD9////AAABAAAAAAD+////AAABAAAAAAD/////AAABAAAAAAAAAP//AAABAAAAAAABAP//AAABAAAAAAACAP//AAABAAAAAAAHAP//AAABAAAAAAAIAP//AAABAAAAAAAJAP//AAABAAAAAAAKAP//AAABAAAAAAAPAP//AAABAAAAAAAQAP//AAABAAAAAAARAP//AAABAAAAAAAPAAIAAAABAAIAAAAQAAIAAAABAAIAAAARAAIAAAABAAIAAAARAAAAAAABAAEAAAAQAAAAAAABAAEAAAAPAAAAAAABAAEAAAAPAAEAAAABAAEAAAAQAAEAAAABAAEAAAARAAEAAAABAAEAAAALAP7/AAAAAAEAAAAOAP7/AAACAAEAAAAGAP7/AAACAAEAAAADAP7/AAAAAAEAAAADAAMAAAAAAAEAAAAGAAMAAAACAAEAAAA=")
+
+[node name="ToNorthHall" parent="Doors" index="0" unique_id=1877469771 instance=ExtResource("2_door")]
 position = Vector2(416, -16)
 target_room = "res://rooms/north_hall.tscn"
 link = &"east_hall_north_hall"
 
-[node name="Spawn" parent="Doors/ToNorthHall"]
-position = Vector2(0, 36)
-
-[node name="ToWardRoom" parent="Doors" instance=ExtResource("2_door")]
+[node name="ToWardRoom" parent="Doors" index="1" unique_id=145994135 instance=ExtResource("2_door")]
 position = Vector2(160, -16)
 target_room = "res://rooms/ward_room.tscn"
 link = &"east_hall_ward_room"
 
-[node name="Spawn" parent="Doors/ToWardRoom"]
-position = Vector2(0, 36)
-
-[node name="ToHub" parent="Doors" instance=ExtResource("2_door")]
+[node name="ToHub" parent="Doors" index="2" unique_id=1730205410 instance=ExtResource("2_door")]
 position = Vector2(-16, 32)
 target_room = "res://rooms/hub.tscn"
 link = &"east_hall_hub"
 
-[node name="Spawn" parent="Doors/ToHub"]
-position = Vector2(36, 0)
-
-[node name="ToDarkMaze" parent="Doors" instance=ExtResource("2_door")]
+[node name="ToDarkMaze" parent="Doors" index="3" unique_id=1780335158 instance=ExtResource("2_door")]
 position = Vector2(496, 32)
 target_room = "res://rooms/dark_maze.tscn"
 link = &"dark_maze_east_hall"
 
-[node name="Spawn" parent="Doors/ToDarkMaze"]
-position = Vector2(-36, 0)
-
-[node name="ToEliteRoom" parent="Doors" instance=ExtResource("2_door")]
+[node name="ToEliteRoom" parent="Doors" index="4" unique_id=1268581220 instance=ExtResource("2_door")]
 position = Vector2(160, 80)
 target_room = "res://rooms/elite_room.tscn"
 link = &"east_hall_elite_room"
-
-[node name="Spawn" parent="Doors/ToEliteRoom"]
-position = Vector2(0, -36)

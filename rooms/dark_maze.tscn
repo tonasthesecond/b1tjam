@@ -1,22 +1,23 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://dt6ghbdqi6fk"]
 
 [ext_resource type="PackedScene" uid="uid://b8u25dlcaf8vs" path="res://rooms/room.tscn" id="1_room"]
 [ext_resource type="PackedScene" path="res://objects/door/door.tscn" id="2_door"]
 [ext_resource type="Texture2D" uid="uid://cjqpvklv02g7g" path="res://assets/map_plan.png" id="3_plan"]
 
-[node name="DarkMaze" instance=ExtResource("1_room")]
+[node name="DarkMaze" unique_id=413583446 instance=ExtResource("1_room")]
 
-[node name="Background" type="Sprite2D" parent="." index="0"]
+[node name="Background" type="Sprite2D" parent="." index="0" unique_id=1455399432]
+position = Vector2(195, 365)
+scale = Vector2(3, 3)
 texture = ExtResource("3_plan")
 centered = false
-scale = Vector2(2, 2)
 region_enabled = true
 region_rect = Rect2(892, 228, 368, 176)
 
-[node name="ToEastHall" parent="Doors" instance=ExtResource("2_door")]
+[node name="Tiles" parent="." index="1"]
+tile_map_data = PackedByteArray("AAAAAAQAAAACAAMAAAAAAAUAAAAFAAEAAAAAAAYAAAAFAAEAAAD//wUAAAAFAAEAAAD//wQAAAABAAIAAAD//wcAAAABAAAAAAD+/wUAAAAFAAEAAAD+/wYAAAAFAAEAAAD//wYAAAAFAAEAAAD+/wcAAAABAAAAAAD+/wQAAAABAAIAAAABAAUAAAAFAAEAAAACAAUAAAAFAAEAAAADAAUAAAAFAAEAAAABAAYAAAAFAAEAAAACAAYAAAAFAAEAAAADAAYAAAAFAAEAAAAEAAUAAAAFAAEAAAAFAAUAAAAFAAEAAAAFAAYAAAAFAAEAAAAEAAYAAAAFAAEAAAAFAAQAAAAFAAEAAAAFAAMAAAAFAAEAAAAFAAEAAAAFAAEAAAAFAAIAAAAFAAEAAAAFAAcAAAAFAAEAAAAFAAgAAAAFAAEAAAAFAAkAAAAFAAEAAAAGAAEAAAAFAAEAAAAHAAEAAAAFAAEAAAAIAAEAAAAFAAEAAAAJAAEAAAAFAAEAAAAKAAEAAAAFAAEAAAAGAAQAAAAFAAEAAAAGAAUAAAAFAAEAAAAGAAYAAAAFAAEAAAAGAAcAAAAFAAEAAAAEAAQAAAAFAAEAAAAEAAcAAAAFAAEAAAAHAAcAAAAFAAEAAAAIAAcAAAAFAAEAAAAJAAcAAAAFAAEAAAAKAAcAAAAFAAEAAAALAAcAAAAFAAEAAAAMAAEAAAAFAAEAAAALAAEAAAAFAAEAAAANAAEAAAAFAAEAAAAOAAEAAAAFAAEAAAAOAAIAAAAFAAEAAAAOAAMAAAAFAAEAAAANAAMAAAAFAAEAAAAMAAMAAAAFAAEAAAAMAAQAAAAFAAEAAAA=")
+
+[node name="ToEastHall" parent="Doors" index="0" unique_id=2090432526 instance=ExtResource("2_door")]
 position = Vector2(-16, 192)
 target_room = "res://rooms/east_hall.tscn"
 link = &"dark_maze_east_hall"
-
-[node name="Spawn" parent="Doors/ToEastHall"]
-position = Vector2(36, 0)
