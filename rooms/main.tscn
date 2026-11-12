@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://byb8cpwgeyibn"]
+[gd_scene load_steps=8 format=3 uid="uid://byb8cpwgeyibn"]
 
 [ext_resource type="Script" uid="uid://cshcvir2881gm" path="res://rooms/main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://c5mh6i405xv6d" path="res://entities/devotee.tscn" id="2_devotee"]
@@ -13,27 +13,27 @@ shader = ExtResource("6_vtl8h")
 shader_parameter/tolerance = 0.1
 shader_parameter/pair_count = 2
 shader_parameter/prev_colors = PackedColorArray(0.35686275, 0.39215687, 0.6039216, 1, 0.003921569, 0.007843138, 0.011764706, 1)
-shader_parameter/new_colors = PackedColorArray(0.28106016, 0.32187694, 0.292773, 1, 0.17744777, 0.084334575, 0.06697994, 1)
+shader_parameter/new_colors = PackedColorArray(0.22035012, 0.32979992, 0.70693785, 1, 0.13375863, 0.023245273, 0.052862234, 1)
 
-[node name="Main" type="Node" unique_id=2056563919]
+[node name="Main" type="Node"]
 script = ExtResource("1_main")
 start_room = "res://rooms/hub.tscn"
 
-[node name="World" type="Node" parent="." unique_id=949843399]
+[node name="World" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Devotee" parent="." unique_id=932173265 instance=ExtResource("2_devotee")]
+[node name="Devotee" parent="." instance=ExtResource("2_devotee")]
 unique_name_in_owner = true
 position = Vector2(224, 224)
 
-[node name="FollowCamera" type="Camera2D" parent="." unique_id=1812049096 node_paths=PackedStringArray("target")]
+[node name="FollowCamera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 unique_name_in_owner = true
 script = ExtResource("3_fcam")
 target = NodePath("../Devotee")
 
-[node name="VisionMask" parent="FollowCamera" unique_id=408641872 instance=ExtResource("5_vision")]
+[node name="VisionMask" parent="FollowCamera" instance=ExtResource("5_vision")]
 
-[node name="ColorRect" type="ColorRect" parent="FollowCamera/VisionMask" unique_id=1622621123]
+[node name="ColorRect" type="ColorRect" parent="FollowCamera/VisionMask"]
 material = SubResource("ShaderMaterial_foqpk")
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,10 +41,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Interface" type="CanvasLayer" parent="." unique_id=1168750349]
+[node name="Interface" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="MeterBar" parent="Interface" unique_id=1892680149 node_paths=PackedStringArray("tracking") instance=ExtResource("4_bar")]
+[node name="MeterBar" parent="Interface" node_paths=PackedStringArray("tracking") instance=ExtResource("4_bar")]
 anchors_preset = -1
 anchor_bottom = 0.033950616
 tracking = NodePath("../../Devotee/LifeMeter")
